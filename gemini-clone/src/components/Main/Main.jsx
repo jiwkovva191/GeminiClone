@@ -1,6 +1,12 @@
+import { useContext, useState } from "react";
 import { assets } from "../../assets/assets";
 import "./Main.css";
+import { Context } from "../../context/context";
 export default function Main() {
+  const {onSent} = useContext(Context);
+  const [input, setInput] = useState("")
+
+
   return (
     <div className="main">
       <div className="nav">
