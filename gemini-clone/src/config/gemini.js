@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = "AIzaSyBOHc0PBuoQwpOfCPn0atsbwPfdZucBlMQ"
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
 if (!apiKey) {
   throw new Error("VITE_GEMINI_API_KEY is missing in the environment variables.");
