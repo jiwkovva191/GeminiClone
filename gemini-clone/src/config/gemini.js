@@ -11,7 +11,8 @@ const DEFAULT_MODEL = "gemini-2.0-flash";
 
 
 
-export async function generateContent(model = DEFAULT_MODEL, contents) {
+export async function generateContent( contents , model = DEFAULT_MODEL) {
+    console.log("sending request with:",{model,contents})
   try {
     const response = await ai.models.generateContent({ model, contents });
     return response.text;

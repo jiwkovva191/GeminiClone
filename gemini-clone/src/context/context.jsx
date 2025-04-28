@@ -5,6 +5,10 @@ export const Context = createContext();
 
 const ContextProvider = (props) => {
   const onSent = async (contents) => {
+    if (!contents || !contents.trim()) {
+        console.error("Contents cannot be empty.");
+        throw new Error("Contents cannot be empty.");
+      }
     try {
       const response = await generateContent(contents);
       console.log("Generated content:", response);

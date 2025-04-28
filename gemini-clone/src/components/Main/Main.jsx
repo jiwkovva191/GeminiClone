@@ -6,7 +6,19 @@ export default function Main() {
   const {onSent} = useContext(Context);
   const [input, setInput] = useState("")
 
-
+const handleSend = async ()=>{
+  if (!input.trim()) {
+    console.error("Input is empty. Please enter a query.");
+    return;
+  }
+  console.log("sending input:", input);
+  try{
+    const response = await onSent(input);
+    console.log("AI response: ", response);
+  }catch(error){
+    console.error("Error while sending: ",error);
+  }
+}
   return (
     <div className="main">
       <div className="nav">
@@ -39,11 +51,11 @@ export default function Main() {
         </div>
         <div className="main-bottom">
             <div className="search-box">
-                <input type="text" name="" id="" placeholder="Ask something..." />
+                <input type="text" value={input} onChange={(e)=>setInput(e.target.value)} placeholder="Ask something..." />
                 <div>
                     <img src={assets.gallery_icon} alt="" />
                     <img src={assets.mic_icon} alt="" />
-                    <img src={assets.send_icon} alt="" />
+                    <button onClick={handleSend}> <img src={assets.send_icon} alt="" /></button>
                 </div>
             </div>
             <p className="bottom-info">
