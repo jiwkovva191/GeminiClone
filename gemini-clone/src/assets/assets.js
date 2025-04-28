@@ -9,6 +9,7 @@ import menu_icon from './menu.png'
 import mic_icon from './mic.png'
 import plus_icon from './plus.png'
 import question_icon from './question.png'
+import send_icon from './send.png'
 
 export const assets = {
     code_icon,
@@ -21,5 +22,6 @@ export const assets = {
     history_icon,
     mic_icon,
     plus_icon,
-    question_icon
+    question_icon,
+    send_icon
 }
