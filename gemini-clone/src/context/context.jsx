@@ -12,6 +12,12 @@ const ContextProvider = (props) => {
   const [resultData, setResultData] = useState("");
   const [newChat, setNewChat] = useState("");
 
+  const delayParagraph = (index, nextWord) => {
+    setTimeout(function () {
+      setResultData((prev) => prev + nextWord);
+    }, 75 * index);
+  };
+
   const onSent = async (contents) => {
     setResultData("");
     setLoading(true);
@@ -23,7 +29,22 @@ const ContextProvider = (props) => {
     }
     try {
       const response = await generateContent(contents);
-      setResultData(response);
+      let responseArray = response.split("**");
+      let newResponse;
+      for (let i = 0; i < responseArray.length; i++) {
+        if (i === 0 || i % 2 !== 1) {
+          newResponse += responseArray[i];
+        } else {
+          newResponse += "<b>" + responseArray[i] + "</b>";
+        }
+      }
+      let newResponse2 = newResponse.split("*").join("</br>");
+      var newResponseArray = newResponse2.split(" ");
+      for(let i =0; i<newResponseArray.length;i++)
+      {
+        const nextWord = newResponseArray[i];
+        delayParagraph(i, nextWord+ " ");
+      }
       setLoading(false);
       setInput("");
       console.log("Generated content:", response);
