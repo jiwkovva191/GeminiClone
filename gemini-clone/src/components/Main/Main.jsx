@@ -26,6 +26,11 @@ export default function Main() {
       console.error("Error while sending: ", error);
     }
   };
+
+  const handleCardClick = (text) =>{
+    setInput(text);
+    handleSend();
+  }
   return (
     <div className="main">
       <div className="nav">
@@ -41,19 +46,19 @@ export default function Main() {
               <p>How can I help you today?</p>
             </div>
             <div className="cards">
-              <div className="card">
+              <div className="card" onClick={()=>handleCardClick("Suggest some beautiful places around Varna")}>
                 <p>Suggest some beautiful places around Varna</p>
                 <img src={assets.compass_icon} alt="" />
               </div>
-              <div className="card">
+              <div className="card" onClick={()=>handleCardClick("Give me the greatest way to cook pasta")}>
                 <p>Give me the greatest way to cook pasta</p>
                 <img src={assets.bulb_icon} alt="" />
               </div>
-              <div className="card">
+              <div className="card" onClick={()=>handleCardClick("I want to plan my day including the following tasks...")}>
                 <p>I want to plan my day including the following tasks...</p>
                 <img src={assets.message_icon} alt="" />
               </div>
-              <div className="card">
+              <div className="card" onClick={()=>handleCardClick("Improve the readability of the following code")}>
                 <p>Improve the readability of the following code</p>
                 <img src={assets.code_icon} alt="" />
               </div>
