@@ -80,12 +80,17 @@ export default function Main() {
           </div>
         )}
 
+        
+        </div>
         <div className="main-bottom">
           <div className="search-box">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e)=>{
+                if(e.key ==="Enter") handleSend()
+              }}
               placeholder="Ask something..."
             />
             <div>
@@ -97,7 +102,6 @@ export default function Main() {
           <p className="bottom-info">
             Gemini may display inaccurate info, so double-check its responses.
           </p>
-        </div>
       </div>
     </div>
   );
