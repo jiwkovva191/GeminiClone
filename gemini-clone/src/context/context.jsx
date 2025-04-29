@@ -10,13 +10,18 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
-  const [newChat, setNewChat] = useState("");
+  
 
   const delayParagraph = (index, nextWord) => {
     setTimeout(function () {
       setResultData((prev) => prev + nextWord);
     }, 75 * index);
   };
+
+  const newChat = ()=>{
+    setLoading(false);
+    setShowResult(false);
+  }
 
   const onSent = async (contents) => {
     setResultData("");
